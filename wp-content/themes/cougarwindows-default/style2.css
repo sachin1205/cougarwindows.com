@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+.video {
+
+	position:relative;
+
+	padding-bottom:55%;
+
+	margin-bottom:1em;
+
+}
+
+.video iframe {
+
+	position:absolute;
+
+	left:0;
+
+	top:0;
+
+}
+
+.ctr {
+
+	text-align: center;
+
+}
+
+.alignleft {
+
+		 max-height:400px;
+
+	 }
+
+ @media (min-width: 40em) {
+
+	 .alignright {
+
+		 max-width:400px;
+
+	 }
+
+	 .alignleft {
+
+		 max-width:400px;
+
+	 }
+
+ }

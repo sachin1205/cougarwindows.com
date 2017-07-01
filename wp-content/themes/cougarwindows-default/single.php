@@ -1,0 +1,54 @@
+<?php
+/**
+ * The Template for displaying all single posts
+ *
+ * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
+ *
+ * @package 	WordPress
+ * @subpackage 	Starkers
+ * @since 		Starkers 4.0
+ */
+?>
+  <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+  <?php Starkers_Utilities::get_template_parts( array( 'parts/site-intro-dest' ) ); ?>
+  </div>
+  <!-- site-header-wrap END -->
+  <div class="breadcrumb">
+    <div class="inner-wrap">
+      <?php
+        if ( function_exists('yoast_breadcrumb') ) {
+        yoast_breadcrumb('
+        <div id="breadcrumbs" class="breadcrumb">','</div>
+        ');
+        }
+    ?>
+    </div>
+  </div>
+  <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+  <!--Site Content-->
+  <section class="site-content two-column" role="main">
+    <div class="inner-wrap content-inner-wrap">
+      <article class="site-content-primary">
+        <div class="post-meta">Posted by
+          <?php the_author_link(); ?> on
+          <time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate>
+            <?php the_date(); ?>
+            <?php the_time(); ?>
+          </time> |
+          <?php comments_popup_link('Leave a Comment', '1 Comment', '% Comments'); ?> </div>
+        <?php the_content(); ?>
+        <?php if(has_tag()) { ?>
+        <hr>
+        <p>
+          <?php the_tags(); ?>
+        </p>
+        <?php } ?>
+        <hr>
+        <?php comments_template( '', true ); ?>
+      </article>
+      <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/sidebar-blog' ) ); ?>
+    </div>
+  </section>
+  <?php endwhile; ?>
+  <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/slidebox' ) ); ?>
+  <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
